@@ -12,6 +12,7 @@ class MyWidget(QMainWindow):
         self.tableWidget.setColumnHidden(0, True)
         self.con = sqlite3.connect('espresso/coffee_db.sqlite')
         self.update_result()
+        self.pushButton.clicked.connect(self.add_new)
 
     def update_result(self):
         cur = self.con.cursor()
@@ -21,6 +22,16 @@ class MyWidget(QMainWindow):
         for i, elem in enumerate(result):
             for j, val in enumerate(elem):
                 self.tableWidget.setItem(i, j, QTableWidgetItem(str(val)))
+
+    def add_new(self):
+        add_window = AddWidget(self)
+        add_window.show()
+
+
+class AddWidget(QMainWindow):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        uic.loadUi('espresso/addEditCoffeeForm.ui', self)
 
 
 if __name__ == '__main__':

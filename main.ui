@@ -14,57 +14,64 @@
    <string>Яндекс Бариста</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTableWidget" name="tableWidget">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>20</y>
-      <width>1241</width>
-      <height>841</height>
-     </rect>
-    </property>
-    <attribute name="horizontalHeaderDefaultSectionSize">
-     <number>200</number>
-    </attribute>
-    <attribute name="verticalHeaderDefaultSectionSize">
-     <number>100</number>
-    </attribute>
-    <column>
-     <property name="text">
-      <string>ID</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Название сорта</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Степень обжарки</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Вид</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Описание вкуса</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Цена, руб</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Объем упаковки, грамм</string>
-     </property>
-    </column>
-   </widget>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QTableWidget" name="tableWidget">
+        <attribute name="horizontalHeaderDefaultSectionSize">
+         <number>200</number>
+        </attribute>
+        <attribute name="verticalHeaderDefaultSectionSize">
+         <number>100</number>
+        </attribute>
+        <column>
+         <property name="text">
+          <string>ID</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Название сорта</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Степень обжарки</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Вид</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Описание вкуса</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Цена, руб</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Объем упаковки, грамм</string>
+         </property>
+        </column>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton">
+        <property name="text">
+         <string>Добавить</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
