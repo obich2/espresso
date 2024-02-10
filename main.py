@@ -18,10 +18,10 @@ class MyWidget(QMainWindow):
         result = cur.execute('''SELECT id, name, melt, gg, taste, price, storage FROM coffee''').fetchall()
         self.tableWidget.setRowCount(len(result))
         self.tableWidget.setColumnCount(len(result[0]))
-        self.titles = [description[0] for description in cur.description]
         for i, elem in enumerate(result):
             for j, val in enumerate(elem):
                 self.tableWidget.setItem(i, j, QTableWidgetItem(str(val)))
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
