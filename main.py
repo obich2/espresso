@@ -32,6 +32,19 @@ class AddWidget(QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
         uic.loadUi('espresso/addEditCoffeeForm.ui', self)
+        self.addbutton.clicked.connect(self.add_to_table)
+        self.con = sqlite3.connect('espresso/coffee_db.sqlite')
+
+    def add_to_table(self):
+        params = [self.name.text(), self.melt.text(), self.kind.text(), self.taste.text(),
+                  self.cost.text(), self.storage.text()]
+        cur = self.con.cursor()
+        cur.execute('''INSERT INTO coffee (name, melt, gg, taste, price, storage) VALUES(?, ?, 
+        ?, ?, ?, ?)''', (params[0], params[1],
+                         params[2], params[3], params[4], params[5])).fetchall()
+        self.con.commit()
+        self.parent().update_result()
+        self.close()
 
 
 if __name__ == '__main__':
