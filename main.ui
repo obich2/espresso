@@ -7,11 +7,11 @@
     <x>0</x>
     <y>0</y>
     <width>1293</width>
-    <height>902</height>
+    <height>919</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Яндекс Бариста</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QTableWidget" name="tableWidget">
@@ -24,7 +24,10 @@
      </rect>
     </property>
     <attribute name="horizontalHeaderDefaultSectionSize">
-     <number>180</number>
+     <number>200</number>
+    </attribute>
+    <attribute name="verticalHeaderDefaultSectionSize">
+     <number>100</number>
     </attribute>
     <column>
      <property name="text">
@@ -53,12 +56,12 @@
     </column>
     <column>
      <property name="text">
-      <string>Цена</string>
+      <string>Цена, руб</string>
      </property>
     </column>
     <column>
      <property name="text">
-      <string>Объем упаковки</string>
+      <string>Объем упаковки, грамм</string>
      </property>
     </column>
    </widget>

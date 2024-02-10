@@ -1,15 +1,27 @@
+import sqlite3
 import sys
 
-from PyQt5 import uic  # Импортируем uic
-from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidget
+from PyQt5 import uic
+from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidgetItem
 
 
 class MyWidget(QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('main.ui', self)  # Загружаем дизайн
+        uic.loadUi('espresso/main.ui', self)
         self.tableWidget.setColumnHidden(0, True)
+        self.con = sqlite3.connect('espresso/coffee_db.sqlite')
+        self.update_result()
 
+    def update_result(self):
+        cur = self.con.cursor()
+        result = cur.execute('''SELECT id, name, melt, gg, taste, price, storage FROM coffee''').fetchall()
+        self.tableWidget.setRowCount(len(result))
+        self.tableWidget.setColumnCount(len(result[0]))
+        self.titles = [description[0] for description in cur.description]
+        for i, elem in enumerate(result):
+            for j, val in enumerate(elem):
+                self.tableWidget.setItem(i, j, QTableWidgetItem(str(val)))
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
