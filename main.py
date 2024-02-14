@@ -8,9 +8,9 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidgetItem
 class MyWidget(QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('espresso/main.ui', self)
+        uic.loadUi('main.ui', self)
         self.tableWidget.setColumnHidden(0, True)
-        self.con = sqlite3.connect('espresso/coffee_db.sqlite')
+        self.con = sqlite3.connect('coffee_db.sqlite')
         self.update_result()
         self.pushButton.clicked.connect(self.add_new)
 
@@ -31,9 +31,9 @@ class MyWidget(QMainWindow):
 class AddWidget(QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
-        uic.loadUi('espresso/addEditCoffeeForm.ui', self)
+        uic.loadUi('addEditCoffeeForm.ui', self)
         self.addbutton.clicked.connect(self.add_to_table)
-        self.con = sqlite3.connect('espresso/coffee_db.sqlite')
+        self.con = sqlite3.connect('coffee_db.sqlite')
 
     def add_to_table(self):
         params = [self.name.text(), self.melt.text(), self.kind.text(), self.taste.text(),
