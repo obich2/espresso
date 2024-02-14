@@ -1,16 +1,18 @@
 import sqlite3
 import sys
 
-from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidgetItem
 
+from UI_main import Ui_MainWindow
+from addEditCoffeeForm import Ui_AddWindow
 
-class MyWidget(QMainWindow):
+
+class MyWidget(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('main.ui', self)
+        self.setupUi(self)
         self.tableWidget.setColumnHidden(0, True)
-        self.con = sqlite3.connect('coffee_db.sqlite')
+        self.con = sqlite3.connect('data/coffee_db.sqlite')
         self.update_result()
         self.pushButton.clicked.connect(self.add_new)
 
@@ -28,12 +30,15 @@ class MyWidget(QMainWindow):
         add_window.show()
 
 
-class AddWidget(QMainWindow):
+class AddWidget(QMainWindow, Ui_AddWindow):
     def __init__(self, parent=None):
-        super().__init__(parent)
-        uic.loadUi('addEditCoffeeForm.ui', self)
-        self.addbutton.clicked.connect(self.add_to_table)
-        self.con = sqlite3.connect('coffee_db.sqlite')
+        try:
+            super().__init__(parent)
+            self.setupUi(self)
+            self.addbutton.clicked.connect(self.add_to_table)
+            self.con = sqlite3.connect('data/coffee_db.sqlite')
+        except Exception as e:
+            print(e)
 
     def add_to_table(self):
         params = [self.name.text(), self.melt.text(), self.kind.text(), self.taste.text(),
